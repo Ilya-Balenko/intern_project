@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "69c5c645-c672-4325-abd5-2af1c4b54a0c",
+		"name": "intern_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51101131",
+		"_collection_link": "https://elijahballin-co-6603246.postman.co/workspace/%D0%98%D0%BB%D1%8C%D1%8F-%D0%91%D0%B0%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE's-Workspace~bdbea221-e215-4990-803a-37a287fa70e8/collection/51101131-69c5c645-c672-4325-abd5-2af1c4b54a0c?action=share&source=collection_link&creator=51101131"
+	},
+	"item": [
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"name\": \"Zasik\",\n    \"email\": \"Mariska@test.com\",\n    \"password\": \"margosa\"\n  }\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post data(email_dupl)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n    \"name\": \"Hose\",\n    \"email\": \"Mariska@test.com\",\n    \"password\": \"kisssa\"\n  }\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
