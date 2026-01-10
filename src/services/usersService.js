@@ -1,11 +1,11 @@
-const { createUser, getUsers } = require('../db');
-
-async function listUsers({ email, limit, offset }) {
-  return await getUsers({ email, limit, offset });
-}
+const usersModel = require('../models/usersModel');
 
 async function addUser({ name, email, passwordHash }) {
-  return await createUser(name, email, passwordHash);
+  return usersModel.createUser(name, email, passwordHash);
 }
 
-module.exports = { listUsers, addUser };
+async function listUsers({ email, limit, offset }) {
+  return usersModel.getUsers({ email, limit, offset });
+}
+
+module.exports = { addUser, listUsers };
