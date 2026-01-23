@@ -1,65 +1,66 @@
-# Projekta prasības
+# Project Requirements
 
-## Projekta mērķis
+## Project Goal
 
-Izveidot vienkāršu tīmekļa lietotni ar lietotāju reģistrāciju, autentifikāciju (login/logout) un satura (ziņu/ierakstu) pievienošanu un skatīšanu. Sistēmai jābūt saprotamai lietotājam un viegli uzturamai no administratora puses.
-
----
-
-## Galvenās funkcionalitātes
-
-* Lietotāju reģistrācija
-* Lietotāju autentifikācija (ielogoties / izlogoties)
-* Ziņu (posts) pievienošana
-* Ziņu saraksta skatīšana
-* Pamata validācija un kļūdu apstrāde
-* Administratora pamata darbības (skatīt lietotājus, dzēst saturu)
+To develop a simple web application with user registration, authentication (login/logout), and content (posts/messages) creation and viewing.  
+The system should be user-friendly and easy to maintain from an administrator’s perspective.
 
 ---
 
-## Lietotāja stāsti (User Stories)
+## Core Functionality
 
-### Lietotājs
-
-* Kā lietotājs es vēlos reģistrēties sistēmā, lai varētu izveidot savu kontu.
-* Kā lietotājs es vēlos ielogoties sistēmā, lai piekļūtu savam kontam.
-* Kā lietotājs es vēlos izlogoties, lai aizsargātu savu kontu.
-* Kā lietotājs es vēlos pievienot jaunu ziņu, lai dalītos ar informāciju.
-* Kā lietotājs es vēlos redzēt visu ziņu sarakstu, lai varētu tās lasīt.
-
-### Administrators
-
-* Kā administrators es vēlos redzēt visu lietotāju sarakstu, lai pārvaldītu sistēmu.
-* Kā administrators es vēlos dzēst neatbilstošas ziņas, lai uzturētu satura kvalitāti.
+- User registration
+- User authentication (login / logout)
+- Creating posts
+- Viewing a list of posts
+- Basic input validation and error handling
+- Basic administrative actions (view users, delete content)
 
 ---
 
-## Aktori
+## User Stories
 
-* Lietotājs
-* Administrators
+### User
 
----
+- As a user, I want to register in the system so that I can create my own account.
+- As a user, I want to log in so that I can access my account.
+- As a user, I want to log out to keep my account secure.
+- As a user, I want to create a new post to share information.
+- As a user, I want to see a list of all posts so that I can read them.
 
-## Use Case saraksts
+### Administrator
 
-### Lietotājs
-
-* Reģistrēties
-* Ielogoties
-* Izlogoties
-* Pievienot ziņu
-* Skatīt ziņas
-
-### Administrators
-
-* Skatīt lietotājus
-* Dzēst ziņas
+- As an administrator, I want to view the list of all users so that I can manage the system.
+- As an administrator, I want to delete inappropriate posts to maintain content quality.
 
 ---
 
-## Piezīmes
+## Actors
 
-* Lietotāju dati tiek glabāti datubāzē
-* Paroles tiek glabātas drošā veidā (hash)
-* Sistēmai jānodrošina korekta kļūdu apstrāde un validācija
+- User
+- Administrator
+
+---
+
+## Use Case List
+
+### User
+
+- Register
+- Log in
+- Log out
+- Create post
+- View posts
+
+### Administrator
+
+- View users
+- Delete posts
+
+---
+
+## Notes
+
+- User data is stored in a database
+- Passwords are stored securely using hashing
+- The system must provide proper validation and error handling

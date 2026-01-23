@@ -1,9 +1,9 @@
-# Projekta kopsavilkums
+# Project Summary
 
-Šajā projektā izveidoju Node.js/Express projekta skeletu un sākotnējo serveri ar maršrutu **GET /health**.  
-Konfigurēju **.env** un pievienoju MySQL savienojumu ar **mysql2/promise**, izveidojot shēmu tabulai **users**.  
-Realizēju pamata funkcijas lietotāju izveidei un saraksta iegūšanai no datubāzes.  
-Ieviesu datu validāciju un izveidoju **POST /users** ar kļūdu apstrādi (t.sk. e-pasta dublikāti).  
-Pievienoju **GET /users** ar filtrēšanu pēc e-pasta un pagināciju, kā arī vienotu kļūdu formātu.  
-Uzrakstīju vienību testus ar **Jest** validācijas funkcijai un minimālus API testus ar **Supertest**.  
-Sagatavoju iesniedzamos artefaktus: Postman kolekciju, DB shēmu/seed un testēšanas pārskatu.
+In this project, I created a Node.js/Express project skeleton and an initial server with the **GET /health** route.  
+I configured **.env** and added a MySQL connection using **mysql2/promise**, creating the schema for the **users** table.  
+I implemented basic functionality for creating users and retrieving a list of users from the database.  
+I added input validation and implemented **POST /users** with proper error handling (including duplicate email cases).  
+I implemented **GET /users** with email filtering and pagination, as well as a unified error response format.  
+I wrote unit tests using **Jest** for the validation logic and minimal API tests using **Supertest**.  
+I prepared the required deliverables: a Postman collection, database schema/seed, and a testing report.

@@ -1,4 +1,16 @@
 const pool=require('../db/index');
+
+/*
+  User model
+
+  Fields:
+  - id
+  - name
+  - email
+  - password_hash
+  - created_at
+*/
+
 //creating user
 async function createUser(name, email, password_hash){
   try {
