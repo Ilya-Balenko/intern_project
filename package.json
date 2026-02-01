@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "test": "jest"
+    "test": "jest",
+    "test:int": "jest --runInBand --testMatch **/tests/integration/**/*.test.js --setupFiles ./tests/helpers/testEnv.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "mysql2": "^3.16.0"
   },
   "devDependencies": {
+    "autocannon": "^8.0.0",
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "supertest": "^7.1.4"

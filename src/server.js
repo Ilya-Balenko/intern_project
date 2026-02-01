@@ -1,14 +1,8 @@
-const express = require('express');
-const app = express();
+const app = require('./app');
 
-const usersRoutes = require('./routes/usersRoutes');
-const errorHandler = require('./middleware/errorHandler');
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+}
 
-app.use(express.json());
-app.use('/users', usersRoutes);
-app.use(errorHandler);
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+module.exports = app;
