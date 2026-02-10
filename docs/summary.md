@@ -1,9 +1,16 @@
 # Project Summary
 
-In this project, I created a Node.js/Express project skeleton and an initial server with the **GET /health** route.  
-I configured **.env** and added a MySQL connection using **mysql2/promise**, creating the schema for the **users** table.  
-I implemented basic functionality for creating users and retrieving a list of users from the database.  
-I added input validation and implemented **POST /users** with proper error handling (including duplicate email cases).  
-I implemented **GET /users** with email filtering and pagination, as well as a unified error response format.  
-I wrote unit tests using **Jest** for the validation logic and minimal API tests using **Supertest**.  
-I prepared the required deliverables: a Postman collection, database schema/seed, and a testing report.
+In this project, I built a structured Node.js/Express backend application with a layered architecture.
+
+I configured environment variables using **.env** and established a MySQL connection via **mysql2/promise**, creating the schema for the **users** table with appropriate constraints.
+
+Core functionality includes creating users and retrieving a paginated list of users with optional email filtering.  
+Input validation is performed before database operations, and a centralized error handler ensures consistent API responses.
+
+A UNIQUE constraint on the email field provides database-level protection against duplicate user records.
+
+I implemented request logging middleware to improve observability and assist with debugging.
+
+Unit tests were written using **Jest** for validation logic, and basic API tests were created with **Supertest**.
+
+Additionally, I prepared supporting deliverables including a Postman collection, database schema and seed scripts, performance testing results, and technical documentation.

@@ -1,79 +1,48 @@
 # Middleware design
-## Validation middleware (User)
-```js
-function validateUser(req, res, next) {
-  const { name, email, password } = req.body;
-  const errors = [];
 
-  if (!name || name.length < 2) {
-    errors.push('Name must be at least 2 characters');
-  }
+This project uses a small set of Express middleware and utilities.
 
-  if (!email || !email.includes('@')) {
-    errors.push('Invalid email format');
-  }
+## Request parsing
+The app uses built-in Express middleware:
 
-  if (!password || password.length < 6) {
-    errors.push('Password must be at least 6 characters');
-  }
+- `express.json()` to parse JSON request bodies.
 
-  if (errors.length > 0) {
-    return res.status(400).json({
-      error: {
-        code: 'VALIDATION_ERROR',
-        message: errors.join(', ')
-      }
-    });
-  }
+## Static UI
+Static frontend files are served from the `public/` directory using:
 
-  next();
-}
-```
-## Validation middleware (Post)at
-```js
-function validatePost(req, res, next) {
-  const { title, content } = req.body;
-  const errors = [];
+- `express.static(...)`
 
-  if (!title || title.length < 3) {
-    errors.push('Title must be at least 3 characters');
-  }
+## Request logging
+A request logging middleware is used to log method, URL, status code, response time, and IP address.
 
-  if (!content) {
-    errors.push('Content must not be empty');
-  }
+Location:
+- `src/middleware/requestLogger.js`
 
-  if (errors.length > 0) {
-    return res.status(400).json({
-      error: {
-        code: 'VALIDATION_ERROR',
-        message: errors.join(', ')
-      }
-    });
-  }
+Connected in:
+- `src/app.js` (registered before routes)
 
-  next();
-}
-```
+## Validation
+Validation is implemented as reusable utility functions (not Express middleware).
+Validators are called inside controllers before calling services.
+
+Validators:
+- `src/utils/userValidator.js`
+- `src/utils/postValidator.js` (planned / used when Posts API is implemented)
+- `src/utils/logValidator.js` (used when Logs API is implemented)
+
+Validation result format:
+- `{ valid: true }` on success
+- `{ valid: false, message: "..." }` on failure
+
+Controllers return HTTP 400 with JSON `{ message: "..." }` when validation fails.
+
 ## Error handling middleware
-```js
-function errorHandler(err, req, res, next) {
-  console.error(err);
+A single error-handling middleware catches unhandled errors and returns HTTP 500.
 
-  if (err.code === 'ER_DUP_ENTRY') {
-    return res.status(400).json({
-      error: {
-        code: 'DB_ERROR',
-        message: 'Duplicate entry'
-      }
-    });
-  }
+Location:
+- `src/middleware/errorHandler.js`
 
-  res.status(500).json({
-    error: {
-      code: 'INTERNAL_ERROR',
-      message: 'Internal server error'
-    }
-  });
-}
-```
+Behavior:
+- Logs the error to console
+- Returns JSON response:
+  - `500` with `{ error: { code: "INTERNAL_ERROR", message: "Something went wrong" } }`

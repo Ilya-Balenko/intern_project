@@ -1,86 +1,112 @@
 # UI/UX Design
 
-## UI Components
+## Overview
+The project includes a minimal web interface designed primarily for testing
+API functionality and demonstrating basic user interactions.
 
-### 1. User Registration Page
+The UI focuses on simplicity, clarity, and usability rather than advanced
+design features.
+
+---
+
+## Current UI
+
+### User Management Page
 
 **Components:**
 - Text input: Name  
 - Text input: Email  
 - Password input: Password  
-- Button: Register  
-- Error message area (validation or server errors)
+- Button: Create User  
+- Button: Load Users  
+- Button: Refresh  
+- Button: Clear View  
+- Message area for success and error responses  
+- Users list container  
 
-**Description:**
-The registration page allows a new user to create an account by entering basic personal data.  
-Validation errors or server responses are displayed below the form.
+**Description:**  
+This page allows users to submit registration data and retrieve a list of
+existing users from the backend API.
+
+Validation and server responses are displayed dynamically,
+providing immediate feedback to the user.
 
 ---
 
-### 2. Add Post Page
+## Planned UI (Not Implemented)
 
-**Components:**
+### Add Post Page
+**Planned components:**
 - Text input: Title  
 - Textarea: Content  
-- Button: Submit  
-- Success / error message area
+- Submit button  
+- Success / error message area  
 
-**Description:**
-This page is used to create a new post.  
-After submission, the user receives feedback indicating success or an error.
-
----
-
-### 3. Posts List Page
-
-**Components:**
-- Table / list container  
-- Post title column  
-- Author column  
-- Created date column  
-
-**Description:**
-The posts list page displays all available posts in a structured list.  
-Each row represents one post with basic metadata.
+**Purpose:**  
+Will allow authenticated users to create posts once the posts feature
+is implemented.
 
 ---
 
-## Component Relationships
+### Posts List Page
+**Planned components:**
+- Table or list container  
+- Post title  
+- Author  
+- Created date  
 
-- Forms send data to the backend API via HTTP requests.
-- Validation errors are displayed near the form that triggered them.
-- Successful actions (registration, post creation) return confirmation messages.
-- Posts list page retrieves data from the backend and renders it as a list.
+**Purpose:**  
+Will display posts retrieved from the backend API.
 
 ---
 
-## Design Guidelines
+## Component Behavior
+
+- Forms send HTTP requests to the backend API.
+- Validation errors are displayed near the relevant inputs.
+- Successful operations return confirmation messages.
+- User lists are dynamically rendered after API responses.
+
+---
+
+## Design Principles
+
+### Simplicity
+The interface prioritizes clarity and ease of use over visual complexity.
+
+### Consistency
+- Consistent spacing between elements  
+- Readable typography  
+- Clearly distinguishable buttons  
+
+### Feedback
+The UI provides immediate feedback for user actions, including
+success confirmations and error messages.
+
+---
+
+## Visual Guidelines
 
 ### Color Palette
-- Background: light or neutral color (white / light gray)
-- Primary elements (buttons): dark or accent color
-- Error messages: red
-- Success messages: green
-
----
+- Background: light / neutral colors  
+- Primary elements: accent color  
+- Error messages: red  
+- Success messages: green  
 
 ### Typography
-- Font: simple sans-serif (e.g. Arial, Roboto)
-- Headings: larger font size, bold
-- Form labels and content text: regular font weight
+- Simple sans-serif fonts (e.g., Arial, Roboto)  
+- Larger, bold headings  
+- Readable form labels  
 
----
-
-### Spacing and Layout
-- Forms are centered on the page
-- Consistent spacing between input fields
-- Clear separation between form area and message area
-- Lists and tables use aligned columns for readability
+### Layout
+- Centered form elements  
+- Structured lists for readability  
+- Clear separation between input areas and messages  
 
 ---
 
 ## Notes
-
-- Wireframes focus on structure, not final visual appearance.
-- No advanced UI logic (filters, sorting, roles) is included at this stage.
-- The design prioritizes clarity and simplicity.
+- The UI is intentionally minimal and primarily supports backend testing.
+- Advanced UI features such as filtering, sorting, and role-based views
+are outside the current project scope.
+- The design is structured to allow future expansion without major redesign.

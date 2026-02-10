@@ -1,122 +1,97 @@
-# Node.js REST API Project
+# intern_project — Node.js REST API (Express + MySQL)
 
-This project is a simple REST API built with Node.js, Express and MySQL.
-It was developed as part of a learning assignment focusing on API design,
-data modeling, validation and error handling.
+A small backend project built with **Node.js**, **Express**, and **MySQL** using a **layered architecture** (controllers → services → models).  
+The project currently implements a **Users API** plus basic validation, centralized error handling, request logging, and automated tests.
 
-## Technologies
+> Note: `/health` route existed earlier but is not part of the current implementation.
+
+## Tech Stack
 - Node.js
-- Express.js
-- MySQL
-- mysql2/promise
-- Jest
-- Supertest
+- Express
+- MySQL (`mysql2/promise`)
+- Jest (unit tests)
+- Supertest (integration tests)
+- autocannon (performance check)
 
-## Project Structure
+## Current Features
+- Create user: `POST /users`
+- List users (pagination + optional email filter): `GET /users`
+- Input validation (validators called from controllers)
+- Centralized error handling middleware
+- Request logging middleware
+- Minimal UI served from `public/` for manual testing
 
-src/
-- server.js – Server startup
-- db/ – Database connection
-- routes/ – API routes
-- controllers/ – Request handling logic
-- models/ – Data access layer
-- middlewares/ – Validation and error handling
+## Planned / Not Implemented
+- Authentication (login/logout)
+- Posts API
+- Logs API endpoints (DB table/model exists, API not exposed)
 
-docs/
-- api_spec.md – API specification
-- validation_rules.md – Validation rules
-- middleware_design.md – Middleware pseudo-code
-- erd.png – Entity Relationship Diagram
-
-tests/
-- Unit and API tests
-
-## API Overview
-
+## API
 ### Users
-- POST /users – Create a new user
-- GET /users – Get users list (with filtering and pagination)
+- `POST /users` — create user  
+  Body: `{ "name": string, "email": string, "password": string }`
+- `GET /users` — list users  
+  Query: `email` (optional), `page` (default 1), `limit` (default 10)
 
-### Posts
-- POST /posts – Create a post
-- GET /posts – Get posts list
+See: `docs/api_spec.md`
 
-### Logs
-- POST /logs – Create log entry
-- GET /logs – Get logs list
+## Project Structure (high level)
 
-## Validation
-Validation rules for users, posts and logs are described in:
-docs/validation_rules.md
+```
+intern_project/
+├── src/
+│   ├── app.js            # Express app configuration
+│   ├── server.js         # Server startup
+│   ├── controllers/      # HTTP request handlers
+│   ├── services/         # Business logic layer
+│   ├── models/           # Database access layer
+│   ├── routes/           # API route definitions
+│   ├── middleware/       # Error handling & request middleware
+│   ├── utils/            # Validators and helper functions
+│   └── db/               # MySQL connection pool
+├── public/               # Minimal frontend UI
+├── tests/                # Unit + integration tests
+├── docs/                 # Technical documentation
+├── .env.example
+├── package.json
+└── README.md
+```
 
-## Error Handling
-Unified error format and error codes are documented in:
-docs/middleware_design.md
+## Setup
 
-## Database
-The database schema includes the following entities:
-- users
-- posts
-- logs
+### 1) Install dependencies
+```bash
+npm install
+```
 
-Relationships are described in ERD:
-docs/erd.png
+### 2) Configure environment variables
+Create `.env` based on `.env.example`:
 
-## Environment Variables
+- `DB_HOST`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_NAME`
 
-Create a `.env` file based on `.env.example`:
+### 3) Run the server (dev)
+```bash
+npm run dev
+```
 
-- DB_HOST
-- DB_USER
-- DB_PASSWORD
-- DB_NAME
-- DB_PORT
+Open:
+- UI: `http://localhost:3000/`
+- API: `http://localhost:3000/users`
 
 ## Tests
-Run tests using:
 
+### Unit tests
+```bash
 npm test
-
-
-
-## Projekta struktūra
 ```
-intern-project/
-├── src/
-│   ├── server.js             # Server start (listen)
-│   ├── db/
-│   │   └── index.js          # MySQL pool (mysql2/promise)
-│   ├── routes/
-│   │   ├── usersRoutes.js
-│   ├── models/
-│   │   ├── usersModel.js
-│   │   ├── postsModel.js
-│   │   └── logsModel.js
-│   ├── middleware/
-│   │   └── errorHandler.js
-│   └── controllers/
-│       ├── usersController.js
-│
-├── docs/
-│   ├── api_spec.md
-|   ├── architecture.md
-|   ├── architecture.png
-|   ├── intern_project.postman_collection.json
-|   ├── intern_project2.4.postman_collection.json
-|   ├── requirements.md
-|   ├── summary.md
-│   ├── validation_rules.md
-│   ├── middleware_design.md
-│   └── erd.png
-│
-├── tests/
-│   ├── validation.test.js
-│   └── users.api.test.js
-│
-├── .env
-├── .env.example
-├── .gitignore
-├── package.json
-├──package-lock.json
-├── README.md
-└── testing_report.md
+
+### Integration tests
+```bash
+npm run test:int
+```
+
+## Documentation
+All documentation lives in `docs/` (architecture, API, validation, testing, performance, UI/UX notes).

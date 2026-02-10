@@ -2,65 +2,68 @@
 
 ## Project Goal
 
-To develop a simple web application with user registration, authentication (login/logout), and content (posts/messages) creation and viewing.  
-The system should be user-friendly and easy to maintain from an administrator’s perspective.
+To develop a simple web application that supports user management and provides
+a foundation for authentication and content features.  
+The system is designed to be maintainable and easy to extend.
 
 ---
 
-## Core Functionality
+## Implementation Status
+
+### ✅ Implemented
+- User registration
+- Viewing a list of users
+- Basic input validation
+- Error handling
+- REST API structure
+- Layered architecture (controllers → services → models)
+- MySQL database integration
+
+### 🚧 Planned / Not Implemented Yet
+- User authentication (login / logout)
+- Password hashing
+- Creating posts
+- Viewing posts
+- Administrative actions (delete content)
+- Role-based access (admin/user)
+
+---
+
+## Core Functionality (Current Scope)
 
 - User registration
-- User authentication (login / logout)
-- Creating posts
-- Viewing a list of posts
-- Basic input validation and error handling
-- Basic administrative actions (view users, delete content)
+- Retrieving users via API
+- Validation and error handling
+- Structured backend architecture
 
 ---
 
 ## User Stories
 
-### User
+### Current
 
-- As a user, I want to register in the system so that I can create my own account.
+- As a user, I want to register so that I can create an account.
+- As a system administrator, I want to view users to monitor the system.
+
+### Planned
+
 - As a user, I want to log in so that I can access my account.
 - As a user, I want to log out to keep my account secure.
-- As a user, I want to create a new post to share information.
-- As a user, I want to see a list of all posts so that I can read them.
-
-### Administrator
-
-- As an administrator, I want to view the list of all users so that I can manage the system.
-- As an administrator, I want to delete inappropriate posts to maintain content quality.
+- As a user, I want to create posts to share information.
+- As a user, I want to view posts.
+- As an administrator, I want to delete inappropriate posts.
 
 ---
 
 ## Actors
 
 - User
-- Administrator
-
----
-
-## Use Case List
-
-### User
-
-- Register
-- Log in
-- Log out
-- Create post
-- View posts
-
-### Administrator
-
-- View users
-- Delete posts
+- Administrator (planned)
 
 ---
 
 ## Notes
 
-- User data is stored in a database
-- Passwords are stored securely using hashing
-- The system must provide proper validation and error handling
+- User data is stored in a MySQL database.
+- Validation is performed before data is written to the database.
+- The architecture is designed to support future authentication and content features.

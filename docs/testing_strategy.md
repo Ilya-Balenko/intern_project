@@ -1,89 +1,95 @@
 # Testing Strategy
 
-## Mērķis
-Šī dokumenta mērķis ir definēt testēšanas pieeju projektam, lai nodrošinātu koda kvalitāti, pareizu funkcionalitāti un stabilu lietotnes darbību.
+## Purpose
+The purpose of this document is to describe the testing approach used in the project to ensure code quality, correct API behavior, and overall application stability at the current stage of development, while also defining directions for future testing.
 
 ---
 
-## Testu veidi
+## Types of Testing
 
-### Unit testi
-**Apraksts:**  
-Vienību testi pārbauda atsevišķas funkcijas vai metodes izolācijā.
+### Unit Tests
+**Description:**  
+Unit tests verify individual functions in isolation without external dependencies such as the database or HTTP layer.
 
-**Piemērs:**  
-- Lietotāja datu validācijas funkcija
-- Paroles garuma pārbaude
+**Examples:**  
+- User data validation functions  
+- Password length and format checks  
 
-**Rīki:**  
-- Jest
-
----
-
-### Integrācijas testi
-**Apraksts:**  
-Integrācijas testi pārbauda vairāku komponentu savstarpējo darbību (piemēram, API + datubāze).
-
-**Piemērs:**  
-- Lietotāja reģistrācija ar datu saglabāšanu datubāzē
-- Ziņas izveide un tās atgriešana API atbildē
-
-**Rīki:**  
-- Jest
-- Supertest
+**Tools:**  
+- Jest  
 
 ---
 
-### Funkcionālie testi
-**Apraksts:**  
-Funkcionālie testi pārbauda sistēmas funkcionalitāti no lietotāja skatpunkta.
+### Integration Tests
+**Description:**  
+Integration tests verify the interaction between multiple components, such as the HTTP API layer and the database.
 
-**Piemērs:**  
-- Reģistrācija ar derīgiem datiem
-- Kļūdas ziņojums, ja e-pasts ir tukšs
+**Examples:**  
+- Creating a user and persisting data to the database  
+- Retrieving users through the API  
 
-**Rīki:**  
-- Postman
-
----
-
-### End-to-End (E2E) testi
-**Apraksts:**  
-End-to-end testi pārbauda visu lietotnes darbības plūsmu no sākuma līdz beigām.
-
-**Piemērs:**  
-- Lietotājs reģistrējas, pieslēdzas un pievieno ziņu
-
-**Rīki:**  
-- (Plānots nākotnē, piemēram, Cypress)
+**Tools:**  
+- Jest  
+- Supertest  
 
 ---
 
-## Testēšanas stratēģija
+### Functional Tests
+**Description:**  
+Functional tests validate system behavior from a user perspective using the API or a simple user interface.
 
-Projektā tiks izmantota sekojoša testēšanas pieeja:
-- Unit testi biznesa loģikai un validācijai
-- Integrācijas testi API galapunktiem
-- Funkcionālie testi galvenajām lietotāja darbībām
+**Examples:**  
+- Successful user registration with valid data  
+- Validation errors when incorrect input is provided  
 
-**Mērķa pārklājums:**  
-- Unit testi: vismaz 70% no biznesa loģikas
-- Integrācijas testi: visi galvenie API endpointi
-
----
-
-## Testu plāns
-
-| Funkcionalitāte | Testa gadījums | Sagaidāmais rezultāts | Atbildīgais |
-|-----------------|----------------|-----------------------|-------------|
-| Reģistrācija | Derīgi dati | Lietotājs tiek izveidots | Izstrādātājs |
-| Reģistrācija | Tukšs e-pasts | VALIDATION_ERROR | Izstrādātājs |
-| Reģistrācija | Parole < 6 simboli | VALIDATION_ERROR | Izstrādātājs |
-| Ziņas pievienošana | Derīgi dati | Ziņa saglabāta | Izstrādātājs |
-| Ziņas pievienošana | Tukšs nosaukums | VALIDATION_ERROR | Izstrādātājs |
-| Ziņu saraksts | Pieprasījums bez kļūdām | Ziņu saraksts atgriezts | Izstrādātājs |
+**Tools:**  
+- Postman  
+- Manual UI testing  
 
 ---
 
-## Secinājums
-Šī testēšanas stratēģija palīdz nodrošināt koda kvalitāti, samazināt kļūdu skaitu un garantēt stabilu lietotnes darbību dažādos lietošanas scenārijos.
+### End-to-End (E2E) Tests
+**Description:**  
+End-to-end tests validate the complete application workflow from user interaction to data persistence and response delivery.
+
+**Status:**  
+- Not implemented at the current stage  
+- Planned for future development (e.g., using Cypress)
+
+---
+
+## Testing Approach
+
+The project follows a layered testing approach:
+
+- Unit tests for validation logic and helper functions  
+- Integration tests for core API endpoints  
+- Functional tests for primary user scenarios  
+
+The testing focus is on application stability, proper error handling, and reliable API responses rather than achieving maximum test coverage.
+
+---
+
+## Test Coverage Goals
+
+- Unit tests: target coverage of core business logic  
+- Integration tests: cover critical API endpoints  
+
+Coverage metrics are treated as guidelines rather than strict requirements, with priority given to meaningful and maintainable tests.
+
+---
+
+## Test Plan
+
+| Feature | Test Case | Expected Result | Responsible |
+|--------|------------|----------------|--------------|
+| User registration | Valid data | User is created | Developer |
+| User registration | Empty email | VALIDATION_ERROR | Developer |
+| User registration | Password < 6 characters | VALIDATION_ERROR | Developer |
+| User listing | Request without errors | Users are returned | Developer |
+
+---
+
+## Conclusion
+This testing strategy helps ensure code quality, reduce defects, and maintain stable application behavior.  
+As the system evolves, the testing scope can be expanded to include E2E automation and deeper performance validation.
