@@ -1,4 +1,8 @@
 # Testing Report
+The project uses a multi-level testing approach including unit tests,
+service tests with mocks, integration tests, and manual UI testing
+to ensure application reliability.
+
 
 ## 4.2 — Validation unit tests
 - validateUser.test.js — OK
@@ -39,7 +43,8 @@
   - `POST /users` with invalid password returns `400`
 
 ### Results
-- `npm run test:int` — PASS (2/2 tests)
+All integration tests passed successfully.
+
 
 # Manual UI Test Results (4.5)
 

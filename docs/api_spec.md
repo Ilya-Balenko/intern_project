@@ -34,7 +34,6 @@
 
 | Status | Meaning |
 |------|---------|
-| 400 | Invalid query parameters |
 | 500 | Internal server error |
 
 ---
