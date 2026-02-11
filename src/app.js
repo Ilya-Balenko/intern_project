@@ -3,6 +3,9 @@ const express = require('express');
 
 const app = express();
 
+const requestLogger = require('./middleware/requestLogger');
+app.use(requestLogger);
+
 app.use(express.json());
 
 // Serve static UI from /public
