@@ -1,12 +1,14 @@
 const path = require('path');
 const express = require('express');
 
+const requestLogger = require('./middleware/requestLogger');
+
 const app = express();
 
-const requestLogger = require('./middleware/requestLogger');
-app.use(requestLogger);
-
 app.use(express.json());
+
+// request logging (before routes)
+app.use(requestLogger);
 
 // Serve static UI from /public
 app.use(express.static(path.join(__dirname, '../public')));

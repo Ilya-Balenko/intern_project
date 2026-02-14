@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "test": "jest",
-    "test:int": "jest --runInBand --testMatch **/tests/integration/**/*.test.js --setupFiles ./tests/helpers/testEnv.js"
+    "test:int": "jest --runInBand --testMatch **/tests/integration/**/*.test.js --setupFiles ./tests/helpers/testEnv.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,8 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "mysql2": "^3.16.0"
+    "mysql2": "^3.16.0",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "autocannon": "^8.0.0",

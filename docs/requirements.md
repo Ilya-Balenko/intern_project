@@ -10,7 +10,7 @@ The system is designed to be maintainable and easy to extend.
 
 ## Implementation Status
 
-### ✅ Implemented
+### Implemented
 - User registration
 - Viewing a list of users
 - Basic input validation
@@ -19,7 +19,7 @@ The system is designed to be maintainable and easy to extend.
 - Layered architecture (controllers → services → models)
 - MySQL database integration
 
-### 🚧 Planned / Not Implemented Yet
+###  Planned / Not Implemented Yet
 - User authentication (login / logout)
 - Password hashing
 - Creating posts

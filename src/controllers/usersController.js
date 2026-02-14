@@ -2,7 +2,8 @@ const usersService = require('../services/usersService');
 const validateUser = require('../utils/userValidator');
 
 async function createUser(req, res, next) {
-  const { name, email, password } = req.body;
+  const body = req.body || {};
+  const { name, email, password } = body;
 
   const validation = validateUser({ name, email, password });
   if (!validation.valid) {
@@ -17,6 +18,7 @@ async function createUser(req, res, next) {
     next(err);
   }
 }
+
 
 async function getUsers(req, res, next) {
   try {
