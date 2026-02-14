@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "test": "jest",
-    "test:int": "jest --runInBand --testMatch **/tests/integration/**/*.test.js --setupFiles ./tests/helpers/testEnv.js"
+    "test:int": "jest --runInBand --testMatch **/tests/integration/**/*.test.js --setupFiles ./tests/helpers/testEnv.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
